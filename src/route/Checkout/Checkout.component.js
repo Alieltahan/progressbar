@@ -1,7 +1,6 @@
 import {Checkout as SourceCheckout } from 'SourceRoute/Checkout/Checkout.component';
 import ContentWrapper from 'SourceComponent/ContentWrapper';
-import './Checkout.extension.style.scss'
-import PropTypes from 'prop-types';
+import Steps from './Checkout.steps';
 
 class Checkout extends SourceCheckout{
 
@@ -20,13 +19,11 @@ class Checkout extends SourceCheckout{
         // console.log('Props', this.props);
         // console.log(this.stepMap[checkoutStep])
         // checkoutStep // location
-        console.log(this.checkOutSteps().length)
+        // console.log(this.checkOutSteps().length)
     return (
         <main block="Checkout">
-            <div className='Checkout__steps'> {this.checkOutSteps().map((step, i) => <div>
-                <span className='Checkout__steps-step-sq' >{i+1}</span>
-                <span className='Checkout__steps-step' key={step}>{step}</span></div>)}
-            </div> 
+            <Steps steps={this.checkOutSteps()}  />
+            
             <ContentWrapper
               wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
               label={ __('Checkout page') }
